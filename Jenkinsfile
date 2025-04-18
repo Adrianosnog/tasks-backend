@@ -31,7 +31,7 @@ pipeline{
         }
         stage ('Deploy Backend'){
             steps{
-                deploy adapters: [tomcat8(credentialsId: 'github_adriano', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+                deploy adapters: [tomcat8(credentialsId: 'Login_Servidor', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
     }
