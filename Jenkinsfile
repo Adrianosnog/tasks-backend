@@ -13,7 +13,7 @@ pipeline{
             }
         stage('Sonar Analysis'){
             environment {
-                scannerHome = tool 'Sonar_Local'
+                scannerHome = tool 'Sonar_Scanner'
             }
             steps{
                 withSonarQubeEnv('Sonar_Local_QG'){
