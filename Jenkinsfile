@@ -51,6 +51,14 @@ pipeline{
                 }
             }
         }
+        stage ('Front Test'){
+                steps{
+                    dir('test-front'){
+                        git credentialsId: 'github_adriano', url: 'https://github.com/Adrianosnog/tasks.frontend.test'
+                        bat 'mvn test'
+                }
+            }
+        }
     }
 }
 
