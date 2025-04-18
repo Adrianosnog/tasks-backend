@@ -51,7 +51,7 @@ pipeline{
                 }
             }
         }
-        stage ('Front Test'){
+        stage ('Functional Test'){
                 steps{
                     dir('test-front'){
                         git credentialsId: 'github_adriano', url: 'https://github.com/Adrianosnog/tasks.frontend.test'
