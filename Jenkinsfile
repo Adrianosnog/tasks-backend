@@ -5,12 +5,12 @@ pipeline{
             steps{
                 bat 'mvn clean package -DskipTests=true'
             }
+        }
         stage('Unit Test'){
             steps{
                 bat 'mvn test'
                 }
             }
-           }
         stage('Sonar Analysis'){
             environment {
                 scannerHome = toll 'SONAR_SCANNER'
