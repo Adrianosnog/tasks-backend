@@ -42,6 +42,14 @@ pipeline{
                     }
             }
         }
+        stage ('Deploy Frontend'){
+                steps{
+                    dir('frontend'){
+                        git credentialsId: 'github_adriano', url: 'https://github.com/Adrianosnog/tasks-frontend'
+                        deploy adapters: [tomcat8(credentialsId: 'Login_Servidor', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+            }
+        }
     }
 }
 
