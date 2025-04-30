@@ -53,7 +53,7 @@ pipeline{
         }
         stage ('Functional Test'){
                 steps{
-                    dir('test-front'){
+                    dir('functional-test'){
                         git credentialsId: 'github_adriano', url: 'https://github.com/Adrianosnog/tasks.frontend.test'
                         bat 'mvn test'
                 }
@@ -68,7 +68,7 @@ pipeline{
         stage ('Health Check'){
             steps{
                 sleep(5)
-                dir('test-front'){
+                dir('functional-test'){
                 bat 'mvn verify -Dskip.surefire.tests'
                 }
             }
@@ -76,7 +76,7 @@ pipeline{
     }
     post{
         always {
-            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, test-front/target/surefire-reports*.xml, test-front/target/failsafe-reports*.xml'
+            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, functional-testt/target/surefire-reports*.xml, functional-test/target/failsafe-reports*.xml'
         }
     }
 }
